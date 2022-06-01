@@ -5,6 +5,7 @@ import Setup.Setup;
 import Utils.ReadJSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,7 @@ public class SignInTestRunner extends Setup {
 
     SignIn objSignIn;
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void doLogin() throws Exception {
         driver.get("http://automationpractice.com");
 
@@ -34,9 +35,12 @@ public class SignInTestRunner extends Setup {
 
         String user = objSignIn.doLogin(email, password);
         Assert.assertEquals(user, "Test User");
+
+        // Sign Out
+        driver.findElement(By.xpath("//a[@class='logout']")).click();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void doLoginForWrongPassword() throws Exception {
         driver.get("http://automationpractice.com");
 

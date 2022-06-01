@@ -21,3 +21,10 @@
 1. JDK 1.8 must be installed.
 2. Requires reliable internet access
 
+## Run The Automation Script
+
+Open Terminal:
+
+```sh
+gradle clean test
+```
