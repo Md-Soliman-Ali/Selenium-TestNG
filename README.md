@@ -1,4 +1,4 @@
-## Manual Testing Standards Case Study:
+## Manual Testing Standards Case Study
 - Test Case ID
 - Test Scenario/Title
 - Test Case
