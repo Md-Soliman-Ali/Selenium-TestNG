@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Login {
+public class SignIn {
 
     WebDriver driver;
 
@@ -38,7 +38,7 @@ public class Login {
     WebElement lblInvalidEmail;
 
     // Constructor
-    public Login(WebDriver driver) {
+    public SignIn(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
