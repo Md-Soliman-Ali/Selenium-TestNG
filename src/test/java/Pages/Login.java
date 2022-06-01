@@ -29,6 +29,14 @@ public class Login {
     @FindBy(xpath = "//span[contains(text(),'Test User')]")
     WebElement lblUserName;
 
+    // Authentication
+    @FindBy(xpath = "//li[contains(text(),'Authentication failed.')]")
+    WebElement lblAuthError;
+
+    // Invalid Email
+    @FindBy(xpath = "//li[contains(text(),'Invalid email address.')]")
+    WebElement lblInvalidEmail;
+
     // Constructor
     public Login(WebDriver driver) {
         this.driver = driver;
@@ -41,5 +49,21 @@ public class Login {
         txtPassword.sendKeys(password);
         btnSubmitLogin.click();
         return lblUserName.getText();
+    }
+
+    public String doLoginForWrongPassword(String email, String password) throws InterruptedException {
+        linkLogin.click();
+        txtEmail.sendKeys(email);
+        txtPassword.sendKeys(password);
+        btnSubmitLogin.click();
+        return lblAuthError.getText();
+    }
+
+    public String doLoginForInvalidEmail(String email, String password) throws InterruptedException {
+        linkLogin.click();
+        txtEmail.sendKeys(email);
+        txtPassword.sendKeys(password);
+        btnSubmitLogin.click();
+        return lblInvalidEmail.getText();
     }
 }
