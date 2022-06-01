@@ -22,9 +22,6 @@
 2. Requires reliable internet access
 
 ## Run The Automation Script
-
-Open Terminal:
-
 ```sh
-gradle clean test
+Terminal: gradle clean test
 ```
