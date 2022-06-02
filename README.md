@@ -25,3 +25,9 @@
 ```sh
 Terminal: gradle clean test
 ```
+
+## Run The Allure
+```sh
+Terminal: allure generate allure-results --clean -o allure-report
+Terminal: allure serve allure-results
+```

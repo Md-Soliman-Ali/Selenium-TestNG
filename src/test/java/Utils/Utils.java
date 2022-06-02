@@ -1,6 +1,7 @@
 package Utils;
 
 import Setup.Setup;
+import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -73,5 +74,23 @@ public class Utils extends Setup {
         double id = Math.random() * (max - min) + min;
         String email = "test" + (int) id + "@test.com";
         return email;
+    }
+
+    // Read JSON File (Multiple Values Returned: Encapsulation)
+    public void readJSONFile() throws IOException, ParseException {
+        JSONParser jsonParser = new JSONParser();
+        Object obj = jsonParser.parse(new FileReader("./src/test/resources/gmail.json"));
+        JSONObject userObj = (JSONObject) obj;
+
+        setEmail((String) userObj.get("email"));
+        setPassword((String) userObj.get("password"));
+    }
+
+    public void addDescription(String data) throws Exception {
+        try {
+            Allure.description(data);
+        } catch (Exception e) {
+            System.out.print(e.toString());
+        }
     }
 }

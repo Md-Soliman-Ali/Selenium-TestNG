@@ -18,7 +18,7 @@ public class Setup {
     public WebDriver driver;
     WebDriverWait wait;
 
-    @BeforeTest(groups = "login")
+    @BeforeTest(groups = {"login", "purchase_product"})
     public void setup() {
         System.setProperty("webdriver.gecko.driver", ".//geckodriver.exe");
         FirefoxOptions options = new FirefoxOptions();
@@ -44,7 +44,7 @@ public class Setup {
         }
     }
 
-    @AfterTest
+    @AfterTest(groups = {"login", "purchase_product"})
     public void finishTest() {
         driver.close();
     }
