@@ -18,7 +18,7 @@ public class Setup {
     public WebDriver driver;
     WebDriverWait wait;
 
-    @BeforeTest(groups = "login_positive")
+    @BeforeTest(groups = "login")
     public void setup() {
         System.setProperty("webdriver.gecko.driver", ".//geckodriver.exe");
         FirefoxOptions options = new FirefoxOptions();

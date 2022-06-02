@@ -67,4 +67,11 @@ public class Utils extends Setup {
         File DestFile = new File(fileWithPath);
         FileUtils.copyFile(screenshotFile, DestFile);
     }
+
+    // Generate Random Email
+    public String generateRandomEmail(int min, int max) {
+        double id = Math.random() * (max - min) + min;
+        String email = "test" + (int) id + "@test.com";
+        return email;
+    }
 }
