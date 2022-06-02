@@ -2,7 +2,7 @@ package TestRunner;
 
 import Pages.SignIn;
 import Setup.Setup;
-import Utils.ReadJSONArray;
+import Utils.Utils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.By;
@@ -16,7 +16,7 @@ public class SignInTestRunner extends Setup {
 
     SignIn objSignIn;
 
-    @Test(enabled = true, priority = 1, description = "Login with valid username and password")
+    @Test(enabled = true, priority = 1, description = "Login with valid username and password", groups = "login_positive")
     public void doLogin() throws Exception {
         driver.get("http://automationpractice.com");
 
@@ -40,29 +40,29 @@ public class SignInTestRunner extends Setup {
         driver.findElement(By.xpath("//a[@class='logout']")).click();
     }
 
-    @Test(enabled = true, priority = 2, description = "Login with wrong password")
+    @Test(enabled = true, priority = 2, description = "Login with wrong password", groups = "login_negative")
     public void doLoginForWrongPassword() throws Exception {
         driver.get("http://automationpractice.com");
 
         objSignIn = new SignIn(driver);
 
-        ReadJSONArray utils = new ReadJSONArray(driver);
-        utils.readJSONArray(0);
+        Utils util = new Utils(driver);
+        util.readJSONArray(0);
 
-        String authError = objSignIn.doLoginForWrongPassword(utils.getEmail(), utils.getPassword());
+        String authError = objSignIn.doLoginForWrongPassword(util.getEmail(), util.getPassword());
         Assert.assertEquals(authError, "Authentication failed.");
     }
 
-    @Test(enabled = true, priority = 3, description = "Login with invalid email")
+    @Test(enabled = true, priority = 3, description = "Login with invalid email", groups = "login_negative")
     public void doLoginForInvalidEmail() throws Exception {
         driver.get("http://automationpractice.com");
 
         objSignIn = new SignIn(driver);
 
-        ReadJSONArray utils = new ReadJSONArray(driver);
-        utils.readJSONArray(1);
+        Utils util = new Utils(driver);
+        util.readJSONArray(1);
 
-        String error = objSignIn.doLoginForInvalidEmail(utils.getEmail(), utils.getPassword());
+        String error = objSignIn.doLoginForInvalidEmail(util.getEmail(), util.getPassword());
         Assert.assertEquals(error, "Invalid email address.");
     }
 }

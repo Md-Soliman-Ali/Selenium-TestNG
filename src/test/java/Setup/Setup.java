@@ -1,6 +1,6 @@
 package Setup;
 
-import Utils.ScreenShot;
+import Utils.Utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -18,7 +18,7 @@ public class Setup {
     public WebDriver driver;
     WebDriverWait wait;
 
-    @BeforeTest
+    @BeforeTest(groups = "login_positive")
     public void setup() {
         System.setProperty("webdriver.gecko.driver", ".//geckodriver.exe");
         FirefoxOptions options = new FirefoxOptions();
@@ -36,8 +36,8 @@ public class Setup {
     public void screenShot(ITestResult result) throws IOException {
         if (ITestResult.FAILURE == result.getStatus()) {
             try {
-                ScreenShot screenShot = new ScreenShot(driver);
-                screenShot.takeScreenShot();
+                Utils util = new Utils(driver);
+                util.takeScreenShot();
             } catch (Exception exception) {
                 System.out.println(exception.toString());
             }
