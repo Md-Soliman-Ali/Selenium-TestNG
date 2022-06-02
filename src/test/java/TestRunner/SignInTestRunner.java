@@ -16,7 +16,7 @@ public class SignInTestRunner extends Setup {
 
     SignIn objSignIn;
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 1, description = "Login with valid username and password")
     public void doLogin() throws Exception {
         driver.get("http://automationpractice.com");
 
@@ -40,7 +40,7 @@ public class SignInTestRunner extends Setup {
         driver.findElement(By.xpath("//a[@class='logout']")).click();
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 2, description = "Login with wrong password")
     public void doLoginForWrongPassword() throws Exception {
         driver.get("http://automationpractice.com");
 
@@ -53,7 +53,7 @@ public class SignInTestRunner extends Setup {
         Assert.assertEquals(authError, "Authentication failed.");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = true, priority = 3, description = "Login with invalid email")
     public void doLoginForInvalidEmail() throws Exception {
         driver.get("http://automationpractice.com");
 
